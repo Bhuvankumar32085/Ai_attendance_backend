@@ -4,6 +4,20 @@ import face_recognition_models
 from sklearn.svm import SVC
 from src.configs.db import supabase
 
+predictor_model = face_recognition_models.pose_predictor_model_location()
+
+face_rec_model = face_recognition_models.face_recognition_model_location()
+
+detector = dlib.get_frontal_face_detector()
+
+sp = dlib.shape_predictor(
+    predictor_model
+)
+
+facerec = dlib.face_recognition_model_v1(
+    face_rec_model
+)
+
 def get_face_embedding(image_np):
 
     faces = detector(image_np, 1)
@@ -196,3 +210,5 @@ def predict_attendance(class_image_np):
         all_students,
         len(encodings)
     )
+    
+    
