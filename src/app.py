@@ -3,13 +3,16 @@ from flask_cors import CORS
 # from routes.auth_routes import auth_bp
 from src.routes.auth_routes import auth_bp
 
+
 import os
 
 app = Flask(__name__)
 
+print('frontend url',os.getenv('FRONTEND_URL'))
+
 CORS(
     app,
-    origins=[f"{os.getenv('FRONTEND_URL')}"],
+    origins=['https://ai-attendance-frontend.vercel.app'],
     supports_credentials=True  
 )
 
