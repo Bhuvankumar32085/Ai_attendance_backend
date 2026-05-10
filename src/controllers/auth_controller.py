@@ -5,7 +5,7 @@ import os
 import jwt
 import base64
 # from datetime import timezone
-from src.pipelines.face_pipeline import get_face_embedding , predict_attendance ,model_data 
+from src.pipelines.face_pipeline import get_face_embedding , predict_attendance  
 from src.pipelines.voice_pipeline import get_voice_embedding , process_bulk_audio
 import base64
 import numpy as np
