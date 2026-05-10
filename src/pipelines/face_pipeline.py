@@ -4,21 +4,34 @@ import face_recognition_models
 from sklearn.svm import SVC
 from src.configs.db import supabase
 
-predictor_model = face_recognition_models.pose_predictor_model_location()
+detector = None
+sp = None
+facerec = None
 
-face_rec_model = face_recognition_models.face_recognition_model_location()
 
-detector = dlib.get_frontal_face_detector()
+def load_models():
 
-sp = dlib.shape_predictor(
-    predictor_model
-)
+    global detector, sp, facerec
 
-facerec = dlib.face_recognition_model_v1(
-    face_rec_model
-)
+    if detector is None:
+
+        predictor_model = face_recognition_models.pose_predictor_model_location()
+
+        face_rec_model = face_recognition_models.face_recognition_model_location()
+
+        detector = dlib.get_frontal_face_detector()
+
+        sp = dlib.shape_predictor(
+            predictor_model
+        )
+
+        facerec = dlib.face_recognition_model_v1(
+            face_rec_model
+        )
 
 def get_face_embedding(image_np):
+    
+    load_models()
 
     faces = detector(image_np, 1)
 
