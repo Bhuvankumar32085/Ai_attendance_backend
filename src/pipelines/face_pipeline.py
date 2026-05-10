@@ -1,9 +1,10 @@
 import dlib
 import numpy as np
 import face_recognition_models
-from sklearn.svm import SVC
+# from sklearn.svm import SVC
 from src.configs.db import supabase
 
+model_data = None
 detector = None
 sp = None
 facerec = None
@@ -104,16 +105,16 @@ def get_trained_svm_model():
         raise Exception("No embeddings found")
 
     # dummy clf for compatibility
-    clf = SVC(
-        kernel='linear',
-        probability=True,
-        class_weight='balanced'
-    )
+    # clf = SVC(
+    #     kernel='linear',
+    #     probability=True,
+    #     class_weight='balanced'
+    # )
 
-    clf.fit(X, Y)
+    # clf.fit(X, Y)
 
     return {
-        "clf": clf,
+        # "clf": clf,
         "X": X,
         "Y": Y
     }
@@ -146,9 +147,11 @@ def predict_attendance(class_image_np):
     global model_data
 
     # always reload latest students
-    model_data = train_classifier()
+    if model_data is None:
+        print("Training model first time...")
+        model_data = train_classifier()
 
-    clf = model_data["clf"]
+    # clf = model_data["clf"]
 
     X = model_data["X"]
 
