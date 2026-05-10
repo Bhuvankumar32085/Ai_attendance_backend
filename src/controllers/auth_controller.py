@@ -5,7 +5,7 @@ import os
 import jwt
 import base64
 # from datetime import timezone
-from src.pipelines.face_pipeline import get_face_embedding , predict_attendance  
+from src.pipelines.face_pipeline import get_face_embedding , predict_attendance  ,reset_model
 from src.pipelines.voice_pipeline import get_voice_embedding , process_bulk_audio
 import base64
 import numpy as np
@@ -178,7 +178,7 @@ def registerImageAndVioce():
 
         face_embedding = face_embeddings[0]
         
-        model_data = None
+        reset_model()
 
         # save face embedding
         supabase.table("face_embeddings").insert({
