@@ -2,9 +2,12 @@ from flask import Flask
 from flask_cors import CORS
 # from routes.auth_routes import auth_bp
 from src.routes.auth_routes import auth_bp
+from dotenv import load_dotenv
 
 
 import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
