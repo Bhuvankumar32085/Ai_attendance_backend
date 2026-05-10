@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.auth_controller import register,login,get_current_user,registerImageAndVioce,add_class,get_classes,enroll_student,teacher_dashboard,mark_attendance,student_dashboard,update_class_status
+from src.controllers.auth_controller import register,login,get_current_user,registerImageAndVioce,add_class,get_classes,enroll_student,teacher_dashboard,mark_attendance,student_dashboard,update_class_status
 
 auth_bp = Blueprint("auth", __name__)
 

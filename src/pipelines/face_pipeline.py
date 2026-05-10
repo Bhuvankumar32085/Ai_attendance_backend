@@ -2,7 +2,7 @@ import dlib
 import numpy as np
 import face_recognition_models
 from sklearn.svm import SVC
-from configs.db import supabase
+from src.configs.db import supabase
 
 def get_face_embedding(image_np):
 
