@@ -1,5 +1,5 @@
 from flask import request, jsonify, make_response
-from configs.db import supabase
+from src.configs.db import supabase
 import bcrypt
 import os
 import jwt
