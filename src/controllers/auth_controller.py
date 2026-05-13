@@ -153,6 +153,8 @@ def get_current_user():
 
 def registerImageAndVioce():
     try:
+       
+        print("REQUEST RECEIVED")
         # ---------------- GET FILES ----------------
         image_file = request.files.get("image")
         audio_file = request.files.get("audio")

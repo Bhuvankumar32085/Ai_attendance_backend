@@ -13,11 +13,7 @@ app = Flask(__name__)
 
 print('frontend url',os.getenv('FRONTEND_URL'))
 
-CORS(
-    app,
-    resources={r"/*": {"origins": "https://ai-attendance-frontend.vercel.app"}},
-    supports_credentials=True
-)
+CORS(app)
 
 @app.route("/")
 def home():
