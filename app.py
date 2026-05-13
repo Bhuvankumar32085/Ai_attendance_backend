@@ -15,8 +15,8 @@ print('frontend url',os.getenv('FRONTEND_URL'))
 
 CORS(
     app,
-    origins=['https://ai-attendance-frontend.vercel.app'],
-    supports_credentials=True  
+    resources={r"/*": {"origins": "https://ai-attendance-frontend.vercel.app"}},
+    supports_credentials=True
 )
 
 @app.route("/")
